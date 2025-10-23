@@ -1,39 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
+    const navigate = useNavigate();
+
+    const handleGetStarted = (e) => {
+        e.preventDefault();
+        // Smooth scroll animation before navigating
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+            navigate("/trips");
+        }, 500);
+    };
+
     return (
         <div
-            className="relative w-full h-screen bg-cover bg-center flex flex-col justify-center items-center text-white"
+            className="relative h-screen bg-cover bg-center flex items-center justify-center"
             style={{
-                backgroundImage:
-                    "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80')",
+                backgroundImage: `url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')`, // light ocean/beach photo
             }}
         >
-            {/* Navbar */}
-            <nav className="absolute top-6 right-10 flex space-x-6 text-lg font-medium">
-                <Link to="/" className="hover:text-yellow-300 transition">
-                    Home
-                </Link>
-                <Link to="/trips" className="hover:text-yellow-300 transition">
-                    All Trips
-                </Link>
-                <Link to="/add" className="hover:text-yellow-300 transition">
-                    Add Trip
-                </Link>
-            </nav>
+            {/* Softer overlay */}
+            <div className="absolute inset-0 bg-white bg-opacity-20"></div>
 
-            {/* Hero Section */}
-            <div className="text-center animate-fadeIn">
-                <h1 className="text-6xl font-bold mb-4 drop-shadow-lg">TravGarney</h1>
-                <p className="text-2xl mb-8 drop-shadow-md">
-                    Capture your adventures. Relive your memories.
+            {/* Content */}
+            <div className="relative z-10 text-center text-white max-w-2xl px-4 animate-fadeIn">
+                <h1 className="text-5xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
+                    Welcome to TravGarney
+                </h1>
+                <p className="text-2xl font-medium mb-6 text-gray-100 leading-relaxed italic">
+                    “Your Story. Your Journey. TravGarney.”
                 </p>
+
                 <Link
                     to="/trips"
-                    className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-yellow-300 transition"
+                    onClick={handleGetStarted}
+                    className="bg-yellow-400 text-black font-semibold px-6 py-3 rounded-lg text-lg shadow-md hover:bg-yellow-300 transition"
                 >
-                    View My Trips
+                    🌍 Get Started
                 </Link>
             </div>
         </div>
