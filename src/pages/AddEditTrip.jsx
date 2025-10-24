@@ -4,7 +4,7 @@ import api from "../api";
 
 export default function AddEditTrip() {
   const navigate = useNavigate();
-  const { id } = useParams(); // detect edit mode
+  const { id } = useParams(); 
   const [trip, setTrip] = useState({
     title: "",
     location: "",
@@ -16,7 +16,7 @@ export default function AddEditTrip() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // If editing, fetch the existing trip
+  // fetch the existing trip
   useEffect(() => {
     if (id) {
       const fetchTrip = async () => {
@@ -36,7 +36,7 @@ export default function AddEditTrip() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Automatically fix postimg.cc links to direct links
+    // Fix postimg.cc links to direct links
     let fixedValue = value;
     if (name === "coverImage" && value.includes("postimg.cc/")) {
       fixedValue = value
