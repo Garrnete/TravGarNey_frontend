@@ -16,16 +16,17 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trips" element={<AllTrips />} />
+        <Route path="/trips/:id" element={<TripDetails />} />
         <Route path="/trips/add" element={<AddEditTrip />} />
         <Route path="/trips/edit/:id" element={<AddEditTrip />} />
-        <Route path="/trips/:id" element={<TripDetails />} />
 
         {/* Journal routes */}
         <Route path="/journals" element={<AllJournals />} />
         <Route path="/journals/add" element={<AddEditJournal />} />
         <Route path="/journals/edit/:id" element={<AddEditJournal />} />
         <Route path="/journals/:id" element={<JournalDetails />} />
-      </Routes>
+      </Routes >
     </>
   );
 }
+

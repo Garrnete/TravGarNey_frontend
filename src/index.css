@@ -15,8 +15,8 @@
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 1.2s ease-out forwards;
+.animate-fadeInSlow {
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
 /* Smooth page fade effect */

@@ -60,15 +60,15 @@ export default function TripDetails() {
             <p className="text-gray-700 mb-6">{trip.description}</p>
 
             <div className="flex gap-3">
-                {/* ✏️ Edit Button */}
+                {/* Edit Button */}
                 <Link
-                    to={`/edit/${trip._id}`}
+                    to={`/trips/edit/${trip._id}`}
                     className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
                 >
                     Edit Trip
                 </Link>
 
-                {/* 🗑️ Delete Button */}
+                {/* Delete Button */}
                 <button
                     onClick={handleDelete}
                     className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
@@ -76,7 +76,7 @@ export default function TripDetails() {
                     Delete Trip
                 </button>
 
-                {/* 🔙 Back Button */}
+                {/* Back Button */}
                 <Link
                     to="/trips"
                     className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"

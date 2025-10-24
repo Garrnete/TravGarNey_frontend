@@ -5,7 +5,7 @@ import TripCard from "../components/TripCard";
 const AllTrips = () => {
   const [trips, setTrips] = useState([]);
 
-  // Fetch trips from backend
+  // Fetch trips 
   useEffect(() => {
     const fetchTrips = async () => {
       try {
@@ -18,11 +18,16 @@ const AllTrips = () => {
     fetchTrips();
   }, []);
 
-  // 🗑 Handle delete
+  // Handle delete
   const handleDelete = async (id) => {
     try {
-      await api.delete(`/trips/${id}`);
-      setTrips(trips.filter((trip) => trip._id !== id)); // update UI instantly
+      const res = await api.delete(`/trips/${id}`);
+      if (res.status === 200) {
+        alert("Trip deleted successfully!");
+        setTrips(trips.filter((trip) => trip._id !== id));
+      } else {
+        alert("Failed to delete trip. Please try again.");
+      }
     } catch (err) {
       console.error("Error deleting trip:", err);
       alert("Failed to delete trip. Please try again.");

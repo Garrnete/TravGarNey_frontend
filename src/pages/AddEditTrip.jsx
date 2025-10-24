@@ -16,7 +16,7 @@ export default function AddEditTrip() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // 🧩 If editing, fetch the existing trip
+  // If editing, fetch the existing trip
   useEffect(() => {
     if (id) {
       const fetchTrip = async () => {
@@ -32,11 +32,11 @@ export default function AddEditTrip() {
     }
   }, [id]);
 
-  // 🧩 Handle form input
+  // Handle form input
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // ✅ Automatically fix postimg.cc links to direct links
+    // Automatically fix postimg.cc links to direct links
     let fixedValue = value;
     if (name === "coverImage" && value.includes("postimg.cc/")) {
       fixedValue = value
@@ -47,7 +47,7 @@ export default function AddEditTrip() {
     setTrip({ ...trip, [name]: fixedValue });
   };
 
-  // 🧩 Handle submit (create or update)
+  // Handle submit (create or update)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -138,7 +138,7 @@ export default function AddEditTrip() {
           className="w-full p-2 border rounded"
         />
 
-        {/* 🖼️ Live image preview */}
+        {/* Live image preview */}
         {trip.coverImage && (
           <img
             src={trip.coverImage}
