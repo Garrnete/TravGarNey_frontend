@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import api from "../api";
 
+
 export default function JournalDetails() {
     const { id } = useParams();
     const [journal, setJournal] = useState(null);
     const [error, setError] = useState("");
     const navigate = useNavigate();
+
 
     useEffect(() => {
         api
@@ -14,6 +16,7 @@ export default function JournalDetails() {
             .then((res) => setJournal(res.data))
             .catch(() => setError("Failed to load journal."));
     }, [id]);
+
 
     const handleDelete = async () => {
         if (!window.confirm("Are you sure you want to delete this journal?")) return;
@@ -25,8 +28,10 @@ export default function JournalDetails() {
         }
     };
 
+
     if (error) return <p className="text-center text-red-600 mt-10">{error}</p>;
     if (!journal) return <p className="text-center mt-10">Loading...</p>;
+
 
     return (
         <div className="max-w-3xl mx-auto mt-10 bg-white p-6 rounded-lg shadow">

@@ -1,47 +1,33 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-    const navigate = useNavigate();
+  return (
+    <div
+      className="relative h-screen flex flex-col items-center justify-center text-center text-white bg-cover bg-center"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80')`,
+      }}
+    >
+      {/* Light overlay */}
+      <div className="absolute inset-0 bg-white bg-opacity-10"></div>
 
-    const handleGetStarted = (e) => {
-        e.preventDefault();
-        // Smooth scroll animation before navigating
-        document.body.classList.add("fade-out");
-        setTimeout(() => {
-            navigate("/trips");
-        }, 500);
-    };
-
-    return (
-        <div
-            className="relative h-screen bg-cover bg-center flex items-center justify-center"
-            style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')`, // light ocean/beach photo
-            }}
+      {/* Content */}
+      <div className="relative z-10 animate-fadeIn px-4">
+        <h1 className="text-6xl font-extrabold mb-4 drop-shadow-lg">
+          TravGarney
+        </h1>
+        <p className="text-xl italic mb-8 text-gray-100 drop-shadow-md">
+          "Your Story. Your Journey. TravGarney."
+        </p>
+        <Link
+          to="/trips"
+          className="bg-yellow-400 text-black font-semibold px-6 py-3 rounded-lg text-lg shadow-md hover:bg-yellow-300 transition"
         >
-            {/* Softer overlay */}
-            <div className="absolute inset-0 bg-white bg-opacity-20"></div>
-
-            {/* Content */}
-            <div className="relative z-10 text-center text-white max-w-2xl px-4 animate-fadeIn">
-                <h1 className="text-5xl font-extrabold mb-4 tracking-wide drop-shadow-lg">
-                    Welcome to TravGarney
-                </h1>
-                <p className="text-2xl font-medium mb-6 text-gray-100 leading-relaxed italic">
-                    “Your Story. Your Journey. TravGarney.”
-                </p>
-
-                <Link
-                    to="/trips"
-                    onClick={handleGetStarted}
-                    className="bg-yellow-400 text-black font-semibold px-6 py-3 rounded-lg text-lg shadow-md hover:bg-yellow-300 transition"
-                >
-                    🌍 Get Started
-                </Link>
-            </div>
-        </div>
-    );
+          View My Trips
+        </Link>
+      </div>
+    </div>
+  );
 }
-
 

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../api";
 
+
 export default function AddEditJournal() {
     const [journal, setJournal] = useState({ title: "", content: "", date: "" });
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const { id } = useParams();
+
 
     useEffect(() => {
         if (id) {
@@ -16,10 +18,12 @@ export default function AddEditJournal() {
         }
     }, [id]);
 
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setJournal({ ...journal, [name]: value });
     };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +39,7 @@ export default function AddEditJournal() {
             setError("Failed to save journal.");
         }
     };
+
 
     return (
         <div className="max-w-xl mx-auto mt-10 bg-white p-6 rounded-lg shadow">
@@ -77,3 +82,5 @@ export default function AddEditJournal() {
         </div>
     );
 }
+
+
